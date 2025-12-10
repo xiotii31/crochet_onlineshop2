@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Trisha's Cozy Crochet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    <style>
+        /* Import your existing CSS variables */
+        :root {
+            --primary-pink: #ffb3c9;
+            --primary-rose: #ff8fb3;
+            --primary-peach: #ffccd5;
+            --accent-mint: #c8e6d7;
+            --accent-lavender: #e8d5f2;
+            --accent-gold: #f4d19b;
+            --cream: #fffbf7;
+            --white: #ffffff;
+            --text-dark: #5a4a54;
+            --text-medium: #9b8a94;
+            --text-light: #c4b5bd;
+            --shadow-sm: 0 2px 10px rgba(255, 143, 179, 0.15);
+            --shadow-md: 0 8px 25px rgba(255, 143, 179, 0.2);
+            --shadow-lg: 0 15px 40px rgba(255, 143, 179, 0.25);
+            --gradient-pink: linear-gradient(135deg, #ffb3c9 0%, #ff8fb3 100%);
+            --gradient-peach: linear-gradient(135deg, #ffccd5 0%, #ffb3c9 100%);
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            --radius-sm: 12px;
+            --radius-md: 20px;
+            --radius-lg: 30px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Quicksand', sans-serif;
+            line-height: 1.7;
+            color: var(--text-dark);
+            background-color: var(--cream);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow-sm);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            transition: var(--transition);
+        }
+
+        .logo:hover {
+            transform: scale(1.05);
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            line-height: 1.2;
+        }
+
+        .logo-name {
+            font-family: 'Satisfy', cursive;
+            font-size: 1.8rem;
+            color: var(--primary-rose);
+            font-weight: 400;
+        }
+
+        .logo-tagline {
+            font-size: 0.9rem;
+            color: var(--text-medium);
+            font-weight: 500;
+            letter-spacing: 1px;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        nav ul li a {
+            font-weight: 600;
+            color: var(--text-dark);
+            text-decoration: none;
+            position: relative;
+            padding: 8px 0;
+            font-size: 15px;
+            transition: var(--transition);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 0;
+            height: 3px;
+            background: var(--gradient-pink);
+            transition: var(--transition);
+            border-radius: 2px;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        .header-icons {
+            display: flex;
+            align-items: center;
+            gap: 25px;
+        }
+
+        .header-icons > div {
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+            color: var(--text-dark);
+            font-size: 18px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+
+        .header-icons > div:hover {
+            background-color: var(--primary-peach);
+            color: var(--primary-rose);
+        }
+
+        /* Page Header */
+        .page-header {
+            background: linear-gradient(135deg, #fffbf7 0%, #ffe8f0 50%, #ffd9e8 100%);
+            padding: 80px 0 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 15px;
+            background: var(--gradient-pink);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .page-header p {
+            font-size: 1.2rem;
+            color: var(--text-medium);
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+        }
+
+        .breadcrumb a {
+            color: var(--primary-rose);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb span {
+            color: var(--text-light);
+        }
+
+        /* Products Section */
+        .products-section {
+            padding: 80px 0;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 40px;
+        }
+
+        .product-card {
+            background-color: var(--white);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary-pink);
+            transform: translateY(-8px);
+        }
+
+        .product-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            height: 350px;
+            background-color: var(--cream);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .product-card:hover .product-img {
+            transform: scale(1.1);
+        }
+
+        .product-info {
+            padding: 30px;
+        }
+
+        .product-title {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .product-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary-rose);
+            margin-bottom: 20px;
+        }
+
+        .product-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: var(--radius-lg);
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 15px;
+            transition: var(--transition);
+            text-align: center;
+            font-family: 'Quicksand', sans-serif;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--gradient-pink);
+            color: var(--white);
+            box-shadow: 0 4px 20px rgba(255, 143, 179, 0.4);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(255, 143, 179, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: var(--primary-peach);
+            color: var(--primary-rose);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-rose);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.95rem;
+        }
+
+        footer i {
+            color: var(--primary-pink);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+                gap: 30px;
+            }
+
+            nav ul {
+                gap: 20px;
+            }
+
+            .header-container {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Products | Trisha's Cozy Crochet</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=Satisfy&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">
+                    <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="50" cy="50" r="35" fill="#ffc1d4" opacity="0.3"/>
+                        <circle cx="50" cy="50" r="28" fill="#ffaac8"/>
+                        <path d="M 30 35 Q 40 30, 50 35" stroke="#ff8fb3" stroke-width="2" fill="none"/>
+                        <path d="M 35 45 Q 45 40, 55 45" stroke="#ff8fb3" stroke-width="2" fill="none"/>
+                        <path d="M 40 55 Q 50 50, 60 55" stroke="#ff8fb3" stroke-width="2" fill="none"/>
+                        <path d="M 35 65 Q 45 60, 55 65" stroke="#ff8fb3" stroke-width="2" fill="none"/>
+                        <line x1="65" y1="25" x2="75" y2="15" stroke="#d4a574" stroke-width="3" stroke-linecap="round"/>
+                        <path d="M 75 15 Q 78 12, 75 9" stroke="#d4a574" stroke-width="3" fill="none" stroke-linecap="round"/>
+                        <path d="M 70 70 C 70 67, 72 65, 74 65 C 76 65, 78 67, 78 70 C 78 75, 74 78, 74 78 C 74 78, 70 75, 70 70 Z" fill="#ff6b9d"/>
+                    </svg>
+                </div>
+                <div class="logo-text">
+                    <span class="logo-name">Trisha's</span>
+                    <span class="logo-tagline">Cozy Crochet</span>
+                </div>
+            </a>
+            
+            <nav id="mainNav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="allproducts.html">Shop</a></li>
+                    <li><a href="index.html#about">About</a></li>
+                    <li><a href="index.html#contact">Contact</a></li>
+                </ul>
+            </nav>
+            
+            <div class="header-icons">
+                <div class="user">
+                    <a href="login.html"><i class="fas fa-user"></i></a>
+                </div>
+                <div class="cart">
+                    <a href="cart.php"><i class="fas fa-shopping-bag"></i></a>
+                    <span class="cart-count">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
+        <div class="container hero-content">
+            <div class="hero-badge">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                </svg>
+                Shop All Products
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" fill="currentColor"/>
+                </svg>
+            </div>
+            <h1>Our Handmade Collection</h1>
+            <p>Discover all our lovingly crafted pieces - from charming keychains to cozy hats and beautiful bouquets</p>
+        </div>
+    </section>
+
+    <!-- Keychains Section -->
+    <section class="featured" id="keychains">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Keychains</span>
+                <h2>Amigurumi Keychains</h2>
+                <p>Cute and handy, perfect for adding charm to your everyday essentials</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Keychain 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K1.jpg" alt="Flower Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Flower Keychain</h3>                       
+                        <div class="product-footer">
+                            <div class="product-price">₱50</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keychain 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">                       
+                        <img src="K2.jpg" alt="Heart Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Ribbon Keychain</h3>                        
+                        <div class="product-footer">
+                            <div class="product-price">₱65</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keychain 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K3.jpg" alt="Star Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Baby Octie</h3>                       
+                        <div class="product-footer">
+                            <div class="product-price">₱55</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keychain 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K4.jpg" alt="Bear Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Tiny Froggo</h3>                      
+                        <div class="product-footer">
+                            <div class="product-price">₱50</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keychain 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K5.jpg" alt="Sunflower Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Psyduck</h3>                        
+                        <div class="product-footer">
+                            <div class="product-price">₱65</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				 <!-- Keychain 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K6.jpg" alt="Sunflower Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">chibby charm</h3>                        
+                        <div class="product-footer">
+                            <div class="product-price">₱65</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				 <!-- Keychain 7 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K7.jpg" alt="Sunflower Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Mini Tulips</h3>                       
+                        <div class="product-footer">
+                            <div class="product-price">₱65</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				 <!-- Keychain 8 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K8.jpg" alt="Sunflower Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">bear head</h3>                       
+                        <div class="product-footer">
+                            <div class="product-price">₱65</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Keychain 9 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="K9.jpg" alt="Butterfly Keychain" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Keychains</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">starla</h3>                       
+                        <div class="product-footer">
+                            <div class="product-price">₱45</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Beanie Hats Section -->
+    <section class="featured" id="hats">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Hats</span>
+                <h2>Beanie Hats</h2>
+                <p>Warm and stylish, made to keep you cozy in every season</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Hat 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C1.jpg" alt="Classic Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Daisy</h3>                      
+                        <div class="product-footer">
+                            <div class="product-price">₱250</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hat 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C2.jpg" alt="Pom Pom Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Strawberry</h3>                       
+                        <div class="product-footer">
+                            <div class="product-price">₱280</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hat 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C3.jpg" alt="Striped Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Cherry</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱270</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Hat 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C4.jpg" alt="Striped Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Psyduck</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱270</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Hat 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C5.jpg" alt="Striped Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Pompompurin</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱270</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hat 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C6.jpg" alt="Slouchy Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Urigumi Froggy</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱260</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hat 7 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C7.jpg" alt="Cable Knit Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Monsters</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱290</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Hat 8 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C8.jpg" alt="Cable Knit Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Fluffy Dragon Head </h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱290</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hat 9 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="C9.jpg" alt="Kids Beanie" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Hats</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Spider Man</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱200</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flower Bouquets Section -->
+    <section class="featured" id="bouquets">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-badge">Bouquets</span>
+                <h2>Flower Bouquets</h2>
+                <p>Everlasting blooms, beautifully handcrafted to brighten any moment</p>
+            </div>
+            
+            <div class="products-grid">
+                <!-- Bouquet 1 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B1.jpg" alt="Rose Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">165 per stem</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱450</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouquet 2 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B2.jpg" alt="Sunflower Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Sunflower Bouquet</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱235 per stem</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouquet 3 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B3.jpg" alt="Tulip Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Daisy Bouquet</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱75 per stem</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouquet 4 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B4.jpg" alt="Mixed Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Tulip Bouquet</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱130 per stem</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouquet 5 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B5.jpg" alt="Daisy Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Carnation Bouquet</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱240 per stem</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Bouquet 6 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B6.jpg" alt="Daisy Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Lavender Bouquet</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱120 per stem</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Bouquet 7 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B7.jpg" alt="Daisy Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Lily Bouquet</h3>
+                        <div class="product-footer">
+                            <div class="product-price">₱230 per stem</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+				
+				<!-- Bouquet 8 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B8.jpg" alt="Daisy Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Mini Flower Bouquet</h3>
+                        <p class="product-description">Sweet daisies for a fresh and innocent look.</p>
+                        <div class="product-footer">
+                            <div class="product-price">₱449</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bouquet 9 -->
+                <div class="product-card">
+                    <div class="product-image-wrapper">
+                        <img src="B9.jpg" alt="Lavender Bouquet" class="product-img">
+                    </div>
+                    <div class="product-info">
+                        <div class="product-meta">
+                            <span class="product-category">Bouquets</span>
+                            <div class="product-rating">
+                                <i class="fas fa-star"></i>
+                                <span>5.0</span>
+                            </div>
+                        </div>
+                        <h3 class="product-title">Mixed Flower Bouquet</h3>
+                        <p class="product-description">Calming lavender sprigs in a charming arrangement.</p>
+                        <div class="product-footer">
+                            <div class="product-price">₱650 (Fixed Price)</div>
+                            <button class="btn-add-cart"><i class="fas fa-shopping-bag"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2025 Trisha's Cozy Crochet. All rights reserved. Made with <i class="fas fa-heart"></i></p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
